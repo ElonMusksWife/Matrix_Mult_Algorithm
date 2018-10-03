@@ -3,49 +3,52 @@ a = []
 B = []
 b = []
 
-print("enter size for matrix 1")
-size1c = int(input())
-size1r = int(input())
-print("enter size for matrix 2")
-size2c = int(input())
-size2r = int(input())
+print("type the size of matrix 1")
 
-if size1c != size2r:
-    print("")
+size_of_matrix_1r = int(input()) #number of rows
+size_of_matrix_1c = int(input()) #number of columns
+
+print("type the size of matrix 2")
+
+size_of_matrix_2r = int(input()) #number of rows
+size_of_matrix_2c = int(input()) #number of columns
+
+if (size_of_matrix_1c!=size_of_matrix_2r):
+    print("matrices will not be multiplied")
+
+print("")
 
 try:
-    while len(a) != size1c:
-        for i in range(size1r):
-            a = [int(x) for x in input().split()]
-            if len(a) != size1c:
+    while(len(a)!=size_of_matrix_1c):
+        for i in range(size_of_matrix_1r):
+            a=[int(x) for x in input().split()]
+            if len(a)!= size_of_matrix_1c:
                 print("")
             A.append(a)
+
 except IndexError:
     pass
 
-#The same for B with b and sizes 2
+try:
+    while(len(b)!=size_of_matrix_2c):
+        for i in range(size_of_matrix_2r):
+            b=[int(x) for x in input().split()]
+            if len(b)!= size_of_matrix_2c:
+                print("")
+            A.append(b)
 
-result = [[0 for x in range(size1c)] for i in range(size1r)]
+except IndexError:
+    pass
 
-for i in range(size1r):
-    for j in range(size2c):
-        for k in range(size2r):
+result = [[0 for x in range(size_of_matrix_2c) for i in range(size_of_matrix_1r)]]
+
+for i in range(len(A)):
+    for j in range(len(B[0])):
+        for k in range(len(B)):
             try:
                 result[i][j] += A[i][k] * B[k][j]
             except IndexError:
                 pass
-'''
-a bit about git
-
-git init
-git add filename
-git commit -m
-git remote add origin ...
-git remote -v
-git push origin master
-'''
-
-
 
 
 
